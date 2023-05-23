@@ -13,13 +13,13 @@ class User(AbstractUser):
         CUSTOMER = "CUSTOMER", "Customer"
         COACH = "COACH", "Coach"
 
-    base_role = Role.ADMIN
     role = models.CharField(max_length=50, choices=Role.choices)
 
     def save(self, *args, **kwargs):
-        if not self.pk:  #if user have no primary key mean is not created
-            self.role = self.base_role
-            return super().save(*args, **kwargs)
+        if not self.pk:
+            self.role = self.Role
+            self.set_password(self.password)  # Hash the password
+        return super().save(*args, **kwargs)
 
 # it just ilter users  with role customer
 class CustomerManager(BaseUserManager):
