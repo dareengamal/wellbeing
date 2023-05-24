@@ -1,7 +1,34 @@
-<form method="post" action="{% url 'login' %}">
+<!-- <form method="post" action="{% url 'login' %}">
     {% csrf_token %}
     <input type="text" name="username" placeholder="Username">
     <input type="password" name="password" placeholder="Password">
     <button type="submit">Login</button>
+    <a href="{% url 'password_reset' %}">Forgot password?</a>
 </form>
+ -->
 
+
+<!-- login.html -->
+<h2>Login</h2>
+<form method="post">
+    {% csrf_token %}
+    <!-- Display authentication errors -->
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+    <label for="id_username">Username:</label>
+    <input type="text" name="username" id="id_username">
+    <label for="id_password">Password:</label>
+    <input type="password" name="password" id="id_password">
+    <label for="id_role">Role:</label>
+    <select name="role" id="id_role">
+        <option value="CUSTOMER">Customer</option>
+        <option value="COACH">Coach</option>
+        <option value="ADMIN">Admin</option>
+    </select>
+    <button type="submit">Login</button>
+</form>

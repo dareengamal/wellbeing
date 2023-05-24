@@ -23,6 +23,6 @@ urlpatterns = [
     path('', include('users.urls')),
     path('users/', include('users.urls')),
     # path('users/', include('users.urls', namespace='users')),
-    
-
 ]
+
+

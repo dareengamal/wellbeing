@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -77,7 +78,8 @@ WSGI_APPLICATION = "trail.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        # "NAME": BASE_DIR / "db.sqlite3",
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
 
@@ -114,6 +116,16 @@ USE_I18N = True
 
 USE_TZ = True
 
+
+# ---------
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 'your_email_port'
+# EMAIL_HOST_USER = 'dareengamal20@gmail.com'
+# EMAIL_HOST_PASSWORD = ''
+# EMAIL_USE_TLS = True  # or False if not using TLS
+# DEFAULT_FROM_EMAIL = 'your_email@example.com'
+# --------------
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
