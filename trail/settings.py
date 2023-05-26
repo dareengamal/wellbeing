@@ -32,7 +32,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    "users",
+    "users","sendgrid",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -40,6 +40,20 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
 ]
+
+# Configure the SendGrid API key
+SENDGRID_API_KEY = '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'
+# settings.py
+
+
+# Email backend configuration
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'apikey'
+EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+DEFAULT_FROM_EMAIL = 'wellbeingmentalhealth4@gmail.com'
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -119,12 +133,12 @@ USE_TZ = True
 
 # ---------
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 'your_email_port'
-# EMAIL_HOST_USER = 'dareengamal20@gmail.com'
-# EMAIL_HOST_PASSWORD = ''
-# EMAIL_USE_TLS = True  # or False if not using TLS
-# DEFAULT_FROM_EMAIL = 'your_email@example.com'
+# EMAIL_HOST = 'smtp.sendgrid.net'
+# EMAIL_PORT = 587  
+# EMAIL_USE_TLS = True 
+# EMAIL_HOST_USER = 'wellbeingmentalhealth4@gmail.com' 
+# EMAIL_HOST_PASSWORD = 'wellbeing123123'
+# DEFAULT_FROM_EMAIL = 'wellbeingmentalhealth4@gmail.com'
 # --------------
 
 # Static files (CSS, JavaScript, Images)
@@ -142,3 +156,4 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
    
 ]
+
